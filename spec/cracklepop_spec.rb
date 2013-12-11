@@ -18,6 +18,15 @@ describe CracklePop do
     expect(cp.cracklepop(6)).to eq('Crackle')
   end
   it 'should return "Pop" if 50 is divisional 5' do
-    expect(cp.cracklepop(45)).to eq('Pop')
+    expect(cp.cracklepop(50)).to eq('Pop')
+  end
+  it 'should return 4 cause it does not divisional from 5 or 3' do
+    expect(cp.cracklepop(4)).to eq(4)
+  end
+  it 'returns the expected output for the numbers 1..100' do
+    first_hundred = (1..100).map { |n| cp.cracklepop(n).to_s }
+    fixture_path = './first100.txt'
+    expected = IO.read(fixture_path).split("\n")
+    expect(first_hundred).to eq expected
   end
 end
